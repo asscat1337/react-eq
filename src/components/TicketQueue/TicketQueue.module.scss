@@ -1,0 +1,43 @@
+@import "../../scss/_variables";
+
+.tickets{
+  height: 95vh;
+  border: 1px solid #dbe1e4;
+  border-radius: 10px;
+  width: calc(40% - 100px);
+  margin-right: 10px;
+  overflow: auto;
+}
+.ticket{
+  border-bottom: 1px solid black;
+}
+.ticketHeader,.ticket{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+
+}
+.ticketHeader{
+  border-bottom: 2px solid #a5abae;
+}
+.ticket{
+margin: 20px auto;
+}
+.service{
+  font-size: 14px;
+  height: 50px;
+}
+.btn{
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  background-color:$green;
+  cursor: pointer;
+  h5{
+    color: $white;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 5px;
+    margin: 0;
+  }
+}

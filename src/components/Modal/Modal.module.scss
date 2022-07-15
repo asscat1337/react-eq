@@ -1,0 +1,27 @@
+.modal{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom:0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  width: 500px;
+  background-color: #ffffff;
+  border-right: 3px;
+  opacity: 1;
+  border-radius: 6px;
+}
+.header{
+  border-bottom: 1px solid #666666;
+}
+.body{
+  padding: 10px ;
+}
+.footer{
+  border-top: 1px solid #666666;
+}

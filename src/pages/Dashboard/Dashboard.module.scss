@@ -1,0 +1,45 @@
+.container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+.panel,.tickets{
+  height: 95vh;
+  border: 1px solid #dbe1e4;
+  border-radius: 10px;
+  width: calc(40% - 100px);
+  margin-right: 10px;
+}
+.panel{
+  margin-left: 15px;
+}
+.panelInfo{
+  height: 45vh;
+  border-bottom: 1px solid black;
+  div{
+    display: flex;
+    flex-direction: column;
+  }
+}
+.buttons{
+  display: grid;
+  grid-template-rows: repeat(5,1fr);
+  width: calc(100% - 85px);
+  .btn{
+    height: 35px;
+    background-color: #61b20c;
+    border: inherit;
+    margin: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 16px;
+    &:disabled{
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@media print {
+  body {height: 8cm; width: 8cm; padding: 0; margin: 0; font-size: 16px; border: none; outline: none;}
+  .wrapper{
+    .name{
+      display:none;
+    }
+    button{
+      display: none;
+    }
+  }
+  @page{
+    size:a8;
+    margin:0 auto;  padding: 0;
+  }
+
+  .ticketModal{
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+  }
+  .content{
+    background-color: black;
+    transform: rotate(180deg);
+    margin:0 auto;
+    background: inherit;
+    opacity: 1;
+    visibility:visible;
+    outline: none !important;
+    border: none !important;
+    outline-offset: 0px !important;
+  }
+}

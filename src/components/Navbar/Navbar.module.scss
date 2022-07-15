@@ -1,0 +1,17 @@
+.navbar{
+  width: 100%;
+  background-color: #f8f8f8;
+  height: 40px;
+}
+.logout{
+  height: 100%;
+  margin:5px 15px;
+  img{
+    cursor: pointer;
+  }
+}
+.content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

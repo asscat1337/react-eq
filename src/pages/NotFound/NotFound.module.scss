@@ -1,0 +1,12 @@
+.notFound{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  flex-direction: column;
+  span{
+    margin: 10px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+}
