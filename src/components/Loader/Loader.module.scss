@@ -1,0 +1,23 @@
+.loaderContainer{
+  position: fixed;
+  z-index: 9999;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.loader {
+  margin: auto;
+  border: 20px solid #EAF0F6;
+  border-radius: 50%;
+  border-top: 20px solid #FF7A59;
+  width: 150px;
+  height: 150px;
+  animation: spinner 4s linear infinite;
+}
+
+@keyframes spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

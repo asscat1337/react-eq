@@ -1,0 +1,64 @@
+@import '../../scss/_variables';
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+  //box-shadow: 5px 10px 11px;
+}
+.login{
+  padding: 20px 10px 18px;
+  width: 250px;
+}
+.wrapper {
+  height: 500px;
+}
+.password{
+  padding: 5px 10px 25px;
+  width: 245px;
+  input {
+    width: 100%;
+    height: 44px;
+  }
+}
+.loginContainer{
+  box-shadow: 2px 1px 10px;
+  width: 520px;
+  max-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  padding: 35px;
+}
+.btnConfirm{
+  width: 250px;
+  button{
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 16px;
+    border-radius: 3px;
+    border: none;
+    background-color:$green;
+    height: 45px;
+    cursor: pointer;
+    width: 100%;
+  }
+}
+.rememberMe{
+  width: 240px;
+  label{
+   display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    input[type="checkbox"]{
+      transform: scale(2);
+      margin-right: 18px;
+    }
+    span{
+      font-size: 20px;
+    }
+  }
+}
