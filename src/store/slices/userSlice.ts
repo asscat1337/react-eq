@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {IUser} from "../types/userTypes";
 import {loginUser} from "../asyncAction/asyncUser";
-import { logoutUser, refresh } from "../asyncAction/asyncLogin";
+import { logoutUser} from "../asyncAction/asyncLogin";
 
 const initialState:IUser = {
   user:{
@@ -26,7 +26,7 @@ const UserSlice = createSlice({
   initialState,
   reducers:{},
   extraReducers:builder => {
-    builder.addCase(loginUser.pending,(state,action)=>{
+    builder.addCase(loginUser.pending,(state)=>{
       state.loading = true
     })
     builder.addCase(loginUser.fulfilled,(state,action)=>{
@@ -39,11 +39,11 @@ const UserSlice = createSlice({
         tokens:action.payload.tokens,
       }
     })
-    builder.addCase(loginUser.rejected,(state,action)=>{
+    builder.addCase(loginUser.rejected,(state)=>{
       state.loading = true
     })
-    builder.addCase(logoutUser.fulfilled,(state,action)=>{
-      state.auth = action.payload.logout
+    builder.addCase(logoutUser.fulfilled,(state)=>{
+      state.auth = false
       state.tokens = {
         refreshToken:"",
         accessToken:""}
