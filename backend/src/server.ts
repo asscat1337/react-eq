@@ -35,6 +35,7 @@ app.use(express.json());
 app.use('/api',router)
 
 if(process.env.NODE_ENV === 'production'){
+  console.log('production')
   app.get('*',(req,res)=>{
     res.sendFile(path.resolve('../','build','index.html'))
   })

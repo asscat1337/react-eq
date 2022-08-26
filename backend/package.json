@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "set NODE_ENV=dev&&nodemon src/server.ts",
     "build": "npx tsc",
-    "prettier": "prettier --config .prettierrc.json --write src/**/*.ts"
+    "prettier": "prettier --config .prettierrc.json --write src/**/*.ts",
+    "production": "pm2 start pm2.config.js --env production"
   },
   "keywords": [],
   "author": "",
