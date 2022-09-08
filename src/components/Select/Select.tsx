@@ -56,7 +56,7 @@ const Select=React.memo(({options,setCurrent}:ISelect)=>{
   },[options])
 
 
-  const opt = options.filter(i=>i.label.includes(search.toLowerCase()))
+  const opt = options?.filter(i=>i.label.includes(search.toLowerCase()))
   return (
     <div
       className={styles.select}

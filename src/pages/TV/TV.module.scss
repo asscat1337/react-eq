@@ -1,3 +1,8 @@
+body{
+  font-family: Arial;
+  box-sizing: border-box;
+}
+
 .container {
   background-color: black;
   width: 100%;
@@ -44,36 +49,40 @@
   border-radius: 10px;
   border:1px solid #ffffff;
   margin: 10px;
-  height: 70px;
-  width: 220px;
+  height: 80px;
+  width: 360px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  transition: 0.5s all;
   .number,.cabinet{
     color:#ffffff;
-    font-size: 22px;
+    font-size: 33px;
     font-weight: 800;
   }
   .number{
+    //height: 90%;
     border-right: 1px solid #ffffff;
     display: flex;
-    line-height: 60px;
+    line-height: 2em;
     padding: 5px;
+    margin-left: 10px;
+    width: 25%;
   }
 }
 .active{
-  background-color: #61b20c;
+  background: linear-gradient(351deg,rgb(99,131,0) 0%,rgb(176,219,0) 100%);
 }
 .ticketContainer{
   display: flex;
   flex-flow: wrap row;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
-.ticketMain{
- width: 70%;
-}
+//.ticketMain{
+// width: 70%;
+//}
 
-@media screen and (max-width: 1450px) {
+@media screen and (max-width: 1720px) {
   .ticketMain{
     width:calc(100% - 150px);
   }

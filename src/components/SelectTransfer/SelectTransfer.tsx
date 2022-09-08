@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { socket } from "../../socket/socket";
 import { deleteTicket } from "../../store/slices/ticketSlice";
+import {openModal} from "../../store/slices/serviceSlice";
 import styles from './SelectTransfer.module.scss'
 
 interface ISelectTransfer{
@@ -18,7 +19,7 @@ const SelectTransfer=React.memo(({
 }:ISelectTransfer)=>{
   const dispatch:AppDispatch = useDispatch()
   const {user} = useSelector((state:RootState)=>state.user)
-  const {transferUser,transferNumber} = useSelector((state:RootState)=>state.dashboard)
+  const {transferUser,transferNumber} = useSelector((state:RootState)=>state?.dashboard)
   const {current} = useSelector((state:RootState)=>state.ticket)
 
   const [value,setValue] = React.useState<string>("")
@@ -36,6 +37,7 @@ const SelectTransfer=React.memo(({
     dispatch(deleteTicket(object))
     socket.emit('completeTransfer',object)
     setValue("")
+    dispatch(openModal(false))
   }
 
   const handleChangeTransfer=(data:any)=>{

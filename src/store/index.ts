@@ -22,7 +22,7 @@ import user from "./slices/userSlice";
 const persistConfig = {
   key:'root',
   storage,
-  blacklist:['tv']
+  blacklist:['tv','service','ticket','dashboard']
 }
 const rootReducer = combineReducers({
   service,

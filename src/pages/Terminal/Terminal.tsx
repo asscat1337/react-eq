@@ -16,7 +16,6 @@ import { Loader } from "../../components/Loader/Loader";
 
 
 const Terminal:React.FC=()=>{
-  const ref = React.useRef<HTMLDivElement>(null)
   const params = useParams()
   const dispatch:AppDispatch = useDispatch()
   const [open,setOpen] = React.useState<boolean>(false)
@@ -37,44 +36,29 @@ const Terminal:React.FC=()=>{
     })
   },[])
 
-  const generateTicket=async ()=>{
-    await dispatch(setCurrent(current));
-    await dispatch(createTicket(current))
-      .then(({ payload }) => {
-        dispatch(updatePointer(payload));
-        window.print();
-        setOpen(false);
-        socket.emit("createTicket", payload);
-      });
-    setAnimate(false)
-    setPos(0)
+  const generateTicket=()=>{
+    dispatch(setCurrent(current));
+    // dispatch(createTicket(current))
+    //   .then(({ payload }) => {
+    //     setOpen(false)
+    //     dispatch(updatePointer(payload));
+    //     // window.print();
+    //     // socket.emit("createTicket", payload);
+    //     setOpen(false)
+    //     setPos(0)
+    //     setAnimate(false)
+    //   });
   }
-
-  React.useEffect(()=>{
-    if(open){
-      const timer = setInterval(async ()=>{
-        setAnimate(true)
-        if(pos >=document.documentElement.clientHeight){
-         await generateTicket()
-        }else{
-          setPos(prev=>prev+200)
-        }
-      },500)
-
-      return ()=>{
-        clearInterval(timer)
-      }
-    }
-
-  },[open,pos])
-
-  
     return (
         <div className={styles.wrapper}>
           {loading && <Loader/>}
           {open && (
               <TicketModal
-                ref={ref}
+                generateTicket={generateTicket}
+                pos={pos}
+                open={open}
+                setAnimate={setAnimate}
+                setPos={setPos}
                 terminalInfo={data}
                 serviceInfo={current}
                 style={{'top':pos}}

@@ -13,6 +13,7 @@ export interface ServiceAttributes{
   status:boolean,
   start_time:string,
   end_time:string,
+  terminalId?:number
 }
 
 export interface ServiceCreationAttributes extends Optional<ServiceAttributes, 'service_id'>{}

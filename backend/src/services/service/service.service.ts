@@ -23,10 +23,21 @@ const createRelationShip=async(payload:IServiceUser)=>{
   })
   return data
 }
+const updatePointer=async (data:any,terminalId:number)=>{
+  return await Service.update({
+    ...data
+  },{
+    where:{
+     terminalId
+    }
+    }
+  )
+}
 
 
 export {
   create,
   get,
-  createRelationShip
+  createRelationShip,
+  updatePointer
 };

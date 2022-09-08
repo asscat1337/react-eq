@@ -51,3 +51,19 @@
     margin-left: 10px;
   }
 }
+.ticketsButton{
+  display: flex;
+  flex-direction: column;
+  button{
+    margin-top:5px
+  }
+}
+.number,.service,.patient{
+  font-size: 24px;
+}
+
+@media screen and (max-width: 1110px){
+  .number,.service,.patient{
+    font-size: 18px;
+  }
+}

@@ -10,6 +10,7 @@
   border-radius: 10px;
   width: calc(40% - 100px);
   margin-right: 10px;
+
 }
 .panel{
   margin-left: 15px;
@@ -27,7 +28,7 @@
   grid-template-rows: repeat(5,1fr);
   width: calc(100% - 85px);
   .btn{
-    height: 35px;
+    height: 40px;
     background-color: #61b20c;
     border: inherit;
     margin: 3px;
@@ -41,5 +42,15 @@
       background-color: #cccccc;
       color: #666666;
     }
+  }
+}
+.ticket{
+  span{
+    font-size: 54px;
+  }
+}
+.service{
+  span{
+    font-size: 32px;
   }
 }

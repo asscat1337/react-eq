@@ -5,13 +5,12 @@ body{
 }
 .ticketModal{
   z-index: 9999;
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 20px;
   left: 0;
   right: 0;
-  display: flex;
-  justify-content: center;
-  padding: 30px 0;
+  height: 100%;
+  width: 100%;
 }
 .content{
   position: relative;
@@ -24,23 +23,26 @@ body{
   opacity: 1;
 }
 .img{
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  height: 45px;
+  padding:7px;
   img{
-    height: 40px;
-    margin:10px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    object-position: center;
+    width: 120px;
   }
 }
 .orgName{
   h5{
-    font-size: 16px;
-    margin: 10px;
+    font-size: 14px;
+    margin: 5px;
   }
 }
 .ticket{
   h5{
     margin:5px;
-    font-size: 66px;
+    font-size: 60px;
   }
 }
 .serviceName{
@@ -49,6 +51,12 @@ body{
   }
   h5{
     margin: 3px;
+  }
+}
+.date{
+  font-size: 20px;
+  h5{
+    margin:3
   }
 }
 .animate{

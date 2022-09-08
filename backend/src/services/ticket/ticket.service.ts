@@ -40,7 +40,7 @@ const create = async (newData:Ticket)=>{
 }
 
 const get = async (object:any)=>{
-  const {isCall,isComplete,variables,user_id} = object
+  const {isCall,isComplete,variables} = object
   const data = Tickets.findAll({
     where:{
       isCall,
@@ -59,30 +59,6 @@ const get = async (object:any)=>{
     }]
   })
   return data
-  // const result = await ServiceUser.findAll({
-  //   where:{
-  //     user_id,
-  //   },
-  //   raw:true
-  // })
-  // const data = await Promise.all(result.map(async (item) => {
-  //   return await Tickets.findAll({
-  //     where: {
-  //       ...variables,
-  //       isCall,
-  //       isComplete
-  //     },
-  //     include:[{
-  //       model:Service,
-  //       include:[{
-  //         model:Terminal
-  //       }]
-  //     }],
-  //     // ...variables
-  //   })
-  // }))
-  //
-  // return data.reduce((prev,acc)=>acc.concat(prev),[]);
 }
 
 const update = async (obj:object,ticket_id:number)=>{

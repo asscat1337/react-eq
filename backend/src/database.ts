@@ -8,7 +8,7 @@ const db_host = process.env.DB_HOST as  string
 const connection = new Sequelize(db, db_user, db_password, {
   host:db_host ,
   dialect: 'mysql',
-  logging:false
+  logging:true
 });
 
 const start = async (): Promise<void> => {

@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrent } from "../../store/slices/ticketSlice";
 import { socket } from "../../socket/socket";
 import { Empty } from "../Empty/Empty";
+import { deleteTicket } from "../../store/slices/ticketSlice";
+import { completeTicket } from "../../store/asyncAction/asyncTicket";
 
 
 interface TicketQueue {
@@ -13,7 +15,7 @@ interface TicketQueue {
   setBtn2: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const TicketQueue =React.memo(({ data, setBtn1, setBtn2 }:TicketQueue)=> {
+const TicketQueue = React.memo(({ data, setBtn1, setBtn2 }: TicketQueue) => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch: AppDispatch = useDispatch();
 
@@ -24,6 +26,14 @@ const TicketQueue =React.memo(({ data, setBtn1, setBtn2 }:TicketQueue)=> {
     setBtn1(true);
   };
 
+  const onClickComplete = (data: any) => {
+    socket.emit("complete", data);
+    dispatch(deleteTicket(data));
+    dispatch(completeTicket(data));
+    setBtn1(false);
+    setBtn2(true);
+  };
+
   return (
     <div className={styles.tickets}>
       {!user.getCurrentTicket ? (
@@ -31,24 +41,30 @@ const TicketQueue =React.memo(({ data, setBtn1, setBtn2 }:TicketQueue)=> {
           <h5>Талон</h5>
           <h5>Услуга</h5>
         </div>
-      ):null}
+      ) : null}
       {data.length ?
         data.map((item: any) => (
-        <div className={`${styles.ticket} ${user.getCurrentTicket ? styles.column : ""}`} key={item.ticket_id}>
+          <div className={`${styles.ticket} ${user.getCurrentTicket ? styles.column : ""}`} key={item.ticket_id}>
         <span className={styles.number}>
-          {item.ticket}
+          Талон:{item.ticket}
         </span>
             {user.getCurrentTicket ? (
-              <span>
+              <span className={styles.patient}>
                 ФИО:{item.notice}
               </span>
-            ):null}
+            ) : null}
             <span className={styles.service}>
-          Прохождение КТ
-        </span>
-            <button className={styles.btn} onClick={() => onClickTicket(item)}>
-              <h5>Вызвать</h5>
-            </button>
+                Услуга:{item.serviceName}
+            </span>
+            <div className={styles.ticketsButton}>
+              <button className={styles.btn} onClick={() => onClickTicket(item)}>
+                <h5>Вызвать</h5>
+              </button>
+              <button className={styles.btn} onClick={() => onClickComplete(item)}>
+                <h5>Обслужен</h5>
+              </button>
+
+            </div>
           </div>
         ))
         :
@@ -56,7 +72,7 @@ const TicketQueue =React.memo(({ data, setBtn1, setBtn2 }:TicketQueue)=> {
       }
     </div>
   );
-})
+});
 export {
   TicketQueue
 };

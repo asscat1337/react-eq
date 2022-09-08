@@ -7,7 +7,7 @@ import styles from "./Dashboard.module.scss";
 import { socket } from "../../socket/socket";
 import { AppDispatch, RootState } from "../../store";
 import { setTicket, setCurrent, deleteTicket, loadingData } from "../../store/slices/ticketSlice";
-import { getTicket, missedTicket,updateUser } from "../../store/asyncAction/asyncTicket";
+import { getTicket, missedTicket,updateUser} from "../../store/asyncAction/asyncTicket";
 import {getTransferUser} from "../../store/asyncAction/asyncUser";
 import { openModal } from "../../store/slices/serviceSlice";
 import { Modal } from "../../components/Modal/Modal";
@@ -41,6 +41,7 @@ const Dashboard: React.FC = () => {
           })
           .catch(e=>{
             if(e){
+              dispatch(logoutUser(user))
               navigate(`/login/${user.terminal}`)
             }
           })
@@ -84,11 +85,12 @@ const Dashboard: React.FC = () => {
       setBtn2(false);
       setBtn1(true);
       dispatch(setCurrent(variable))
+      if(variable){
+        await dispatch(updateUser({user_id:user.user_id,ticket_id:variable.ticket_id}))
+        socket.emit('showTv',{...variable,user})
+      }
     }catch (e) {
       console.log(e)
-    }finally {
-      await dispatch(updateUser({user_id:user.user_id,ticket_id:data[0].ticket_id}))
-      socket.emit('showTv',{...data[0],user})
     }
   };
   const onClickComplete = () => {

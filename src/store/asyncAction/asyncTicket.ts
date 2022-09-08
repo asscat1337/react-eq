@@ -49,11 +49,23 @@ const updateUser = createAsyncThunk(
     }
   }
 )
+const completeTicket = createAsyncThunk(
+  'ticket/complete-ticket',
+  async(payload:any,thunkAPI)=>{
+    try{
+      await $http.put('/ticket/complete-ticket',payload)
+    }catch(e){
+      console.log(e)
+    }
+  }
+)
+
 
 export {
   createTicket,
   getTicket,
   getTv,
   missedTicket,
-  updateUser
+  updateUser,
+  completeTicket
 }

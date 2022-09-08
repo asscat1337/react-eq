@@ -18,10 +18,13 @@ type Service = {
 
 export  interface ITicketModal{
   open?:boolean,
+  generateTicket:()=>void,
+  pos:number
+  setAnimate:React.Dispatch<React.SetStateAction<boolean>>
+  setPos:React.Dispatch<React.SetStateAction<number>>
   children?:React.ReactNode,
   terminalInfo:Terminal,
   serviceInfo:Service,
-  ref:React.ForwardedRef<HTMLDivElement>,
   style:React.CSSProperties,
   animate?:boolean
 }

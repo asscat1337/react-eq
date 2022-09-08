@@ -29,12 +29,14 @@ const socket=async ()=>io.on('connection',(sock:Socket)=>{
     sock.to(terminal.name).emit("translateTv", data);
   });
   sock.on("complete", (data:any) => {
+    console.log(data)
     io.in("ackt").emit("completeTv", data);
   });
   sock.on("completeTransfer",(data:any)=>{
     io.in("ackt").emit("prepareTransfer",data)
   })
   sock.on("transferTicket", async(data:any) => {
+    console.log(data)
     const sendObject = data.sendNotice && {
       notice:data.notice
     }

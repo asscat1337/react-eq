@@ -103,6 +103,21 @@ class TicketController {
       return res.status(500).json(e)
     }
   }
+
+  async completeTicket(req:Request,res:Response,next:NextFunction):Promise<any>{
+    try{
+      const {ticket_id} = req.body
+
+      const data = await update({
+        isCall:1
+      },ticket_id)
+
+      return res.status(200).json(data)
+
+    }catch (e) {
+      return res.status(500).json(e)
+    }
+  }
 }
 
 

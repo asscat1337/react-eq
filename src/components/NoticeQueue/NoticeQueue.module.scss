@@ -29,4 +29,15 @@
 .header{
   padding: 21px;
   border-bottom: 1px solid silver;
+  h5{
+    margin: 0;
+  }
+}
+.noticeButton{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  button{
+    margin: 5px 5px ;
+  }
 }

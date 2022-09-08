@@ -1,9 +1,10 @@
 import React from "react";
-import {setCurrent} from "../../store/slices/ticketSlice";
+import { deleteTicket, setCurrent } from "../../store/slices/ticketSlice";
 import styles from './NoticeQueue.module.scss'
 import { AppDispatch, RootState } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { socket } from "../../socket/socket";
+import { completeTicket } from "../../store/asyncAction/asyncTicket";
 
 
 interface INotice{
@@ -23,23 +24,37 @@ const NoticeQueue =React.memo(({data,setBtn1,setBtn2}:INotice)=>{
     setBtn1(true)
     setBtn2(false)
   }
-
+  const onCompleteTicket=(item:any)=>{
+    setBtn2(false)
+    setBtn1(true)
+    socket.emit('complete',item)
+    dispatch(completeTicket(item))
+    dispatch(deleteTicket(item))
+  }
   return (
     <div className={styles.notice}>
       <div className={styles.header}>
-        Результат
+       <h5>Результат</h5>
       </div>
       {data.map((item:any)=>(
         <div className={styles.noticeTicket} key={item.ticket_id}>
           <span>Талон:{item.ticket}</span>
           <span>Услуга:{item.serviceName}</span>
           <span>ФИО:{item.notice}</span>
-          <button
-            className={styles.call}
-            onClick={()=>onCallTicket(item)}
-          >
-            Вызвать
-          </button>
+          <div className={styles.noticeButton}>
+            <button
+              className={styles.call}
+              onClick={()=>onCallTicket(item)}
+            >
+              Вызвать
+            </button>
+            <button
+              className={styles.call}
+              onClick={()=>onCompleteTicket(item)}
+            >
+              Обслужен
+            </button>
+          </div>
         </div>
       ))}
     </div>

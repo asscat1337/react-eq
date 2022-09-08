@@ -1,19 +1,16 @@
 @media print {
-  body {height: 8cm; width: 8cm; padding: 0; margin: 0; font-size: 16px; border: none; outline: none;}
+  body {height: 5cm; width: 5cm; padding: 0; margin: 0; font-size: 16px; border: none; outline: none;}
   .wrapper{
-    .name{
-      display:none;
-    }
-    button{
-      display: none;
-    }
+    visibility: hidden;
   }
   @page{
-    size:a8;
-    margin:0 auto;  padding: 0;
+    size:a6;
+    margin:0 auto;
+    padding: 0;
   }
 
   .ticketModal{
+    visibility: visible;
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
@@ -23,7 +20,7 @@
   }
   .content{
     background-color: black;
-    transform: rotate(180deg);
+    //transform: rotate(180deg);
     margin:0 auto;
     background: inherit;
     opacity: 1;
@@ -31,5 +28,12 @@
     outline: none !important;
     border: none !important;
     outline-offset: 0px !important;
+
+    .img{
+      height: 45px;
+    }
+    .ticket{
+      margin:0
+    }
   }
 }

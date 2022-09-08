@@ -10,7 +10,7 @@ import { createTicket } from "../../store/asyncAction/asyncTicket";
 import { socket } from "../../socket/socket";
 
 
-const TerminalButton: React.FC<ITerminalButton> = ({ name, setOpen, current,animate}): JSX.Element => {
+const TerminalButton: React.FC<ITerminalButton> = ({ name, setOpen, current,animate}) => {
   const dispatch: AppDispatch = useDispatch();
   const time = dayjs().format("HH:mm:ss");
   const onClickButton = async (): Promise<void> => {
@@ -18,24 +18,29 @@ const TerminalButton: React.FC<ITerminalButton> = ({ name, setOpen, current,anim
       dispatch(openModal(true));
       return;
     }
-    setOpen(true);
+    if (setOpen) {
+      setOpen(true);
+    }
+
+
     dispatch(setCurrent(current));
-    //   await dispatch(createTicket(current))
-    //     .then(({ payload }) => {
-    //       dispatch(updatePointer(payload));
-    //       window.print();
-    //       setOpen(false);
-    //       socket.emit("test", payload);
-    //     });
-    // }
-  };
+      await dispatch(createTicket(current))
+        .then(({ payload }) => {
+          dispatch(updatePointer(payload));
+          window.print();
+          if (setOpen) {
+            setOpen(false);
+          }
+          socket.emit("createTicket", payload);
+        });
+    }
 
   return (
     <button className={styles.button} onClick={onClickButton}>
       <h1 className={styles.buttonText}>{name}</h1>
     </button>
-  );
-};
+  )
+  };
 
 export {
   TerminalButton

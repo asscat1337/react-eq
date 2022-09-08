@@ -26,11 +26,10 @@ const TV: React.FC = () => {
     const url = window.location.search;
     setUrlSearchParams(url);
     socket.on('disconnect',()=>{
-      socket.emit("joinRoom", urlSearchParams.get("id"));
       dispatch(setLoading(true))
     })
     socket.on('connect',()=>{
-      socket.connect()
+      socket.emit("joinRoom", urlSearchParams.get("id"));
       dispatch(setLoading(false))
     })
     start();
